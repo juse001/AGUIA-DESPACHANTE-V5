@@ -19,10 +19,11 @@ export const nomesStatusProcesso: Record<StatusProcesso, string> = {
   [StatusProcesso.EM_ANALISE]: 'Em Análise',
   [StatusProcesso.DOCUMENTACAO_INCOMPLETA]: 'Documentação Incompleta',
   [StatusProcesso.DOCUMENTACAO_COMPLETA]: 'Documentação Completa',
-  [StatusProcesso.PRONTO_PARA_PROTOCOLO]: 'Pronto para Protocolo',
-  [StatusProcesso.APROVADO]: 'Aprovado',
-  [StatusProcesso.REJEITADO]: 'Rejeitado',
-  [StatusProcesso.FINALIZADO]: 'Finalizado',
+  [StatusProcesso.DOCUMENTACAO_COMPLETA_PARA_PROTOCOLO]: 'Documentação Completa para Protocolo',
+  [StatusProcesso.DEFERIDO]: 'Deferido',
+  [StatusProcesso.INDEFERIDO]: 'Indeferido',
+  [StatusProcesso.ENTREGUE_AO_CLIENTE]: 'Entregue ao Cliente',
+  [StatusProcesso.RESTITUIDO]: 'Restituído',
 };
 
 export const nomesStatusDocumento: Record<StatusDocumento, string> = {
@@ -37,10 +38,11 @@ export const coresStatusProcesso: Record<StatusProcesso, string> = {
   [StatusProcesso.EM_ANALISE]: 'bg-green-100 text-green-800',
   [StatusProcesso.DOCUMENTACAO_INCOMPLETA]: 'bg-yellow-100 text-yellow-800',
   [StatusProcesso.DOCUMENTACAO_COMPLETA]: 'bg-green-100 text-green-800',
-  [StatusProcesso.PRONTO_PARA_PROTOCOLO]: 'bg-yellow-100 text-yellow-800',
-  [StatusProcesso.APROVADO]: 'bg-emerald-100 text-emerald-800',
-  [StatusProcesso.REJEITADO]: 'bg-red-100 text-red-800',
-  [StatusProcesso.FINALIZADO]: 'bg-gray-100 text-gray-800',
+  [StatusProcesso.DOCUMENTACAO_COMPLETA_PARA_PROTOCOLO]: 'bg-yellow-100 text-yellow-800',
+  [StatusProcesso.DEFERIDO]: 'bg-emerald-100 text-emerald-800',
+  [StatusProcesso.INDEFERIDO]: 'bg-red-100 text-red-800',
+  [StatusProcesso.ENTREGUE_AO_CLIENTE]: 'bg-gray-100 text-gray-800',
+  [StatusProcesso.RESTITUIDO]: 'bg-purple-100 text-purple-800',
 };
 
 export const coresStatusDocumento: Record<StatusDocumento, string> = {

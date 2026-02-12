@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
-import { Users, FileText, BarChart3, Settings } from 'lucide-react';
+import { Users, FileText, BarChart3, Settings, CheckCircle, RotateCcw } from 'lucide-react';
 import { Button } from '../components';
 import { usePessoasStore } from '../stores/pessoasStore';
 import { useProcessosStore } from '../stores/processosStore';
+import { StatusProcesso } from '../types';
 
 interface DashboardProps {
   onNavigate: (page: string) => void;
@@ -17,9 +18,10 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
     carregarProcessos();
   }, []);
 
-  const processosAbertos = processos.filter((p) => p.status === 'ABERTO').length;
-  const processosCompletos = processos.filter((p) => p.status === 'DOCUMENTACAO_COMPLETA').length;
-  const percentualPessoas = processos.length > 0 ? (processosCompletos / processos.length * 100).toFixed(1) : '0.0';
+  const processosAbertos = processos.filter((p) => p.status === StatusProcesso.ABERTO).length;
+  const processosDeferidos = processos.filter((p) => p.status === StatusProcesso.DEFERIDO).length;
+  const processosRestituidos = processos.filter((p) => p.status === StatusProcesso.RESTITUIDO).length;
+  const percentualPessoas = processos.length > 0 ? (processosDeferidos / processos.length * 100).toFixed(1) : '0.0';
 
   return (
     <div className="space-y-6">
@@ -64,10 +66,20 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
         <div className="bg-white rounded-lg shadow p-6 border-l-4 border-green-500">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-gray-600 text-sm">Documentação Completa</p>
-              <p className="text-3xl font-bold text-gray-900">{processosCompletos}</p>
+              <p className="text-gray-600 text-sm">Processos Deferidos</p>
+              <p className="text-3xl font-bold text-gray-900">{processosDeferidos}</p>
             </div>
-            <FileText className="w-10 h-10 text-green-500 opacity-50" />
+            <CheckCircle className="w-10 h-10 text-green-500 opacity-50" />
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow p-6 border-l-4 border-purple-500">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-gray-600 text-sm">Processos Restituídos</p>
+              <p className="text-3xl font-bold text-gray-900">{processosRestituidos}</p>
+            </div>
+            <RotateCcw className="w-10 h-10 text-purple-500 opacity-50" />
           </div>
         </div>
       </div>
@@ -108,7 +120,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
           <h2 className="text-xl font-semibold text-gray-900 mb-4">Resumo</h2>
           <div className="space-y-3">
             <div className="flex justify-between items-center">
-              <span className="text-gray-600">Taxa de Conclusão</span>
+              <span className="text-gray-600">Taxa de Aprovação</span>
               <span className="font-semibold text-gray-900">{percentualPessoas}%</span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2">
@@ -118,7 +130,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate }) => {
               />
             </div>
             <div className="text-sm text-gray-500 mt-2">
-              {processosCompletos} de {processos.length} processos com documentação completa
+              {processosDeferidos} de {processos.length} processos deferidos
             </div>
           </div>
         </div>

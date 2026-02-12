@@ -19,10 +19,11 @@ export var StatusProcesso;
     StatusProcesso["EM_ANALISE"] = "EM_ANALISE";
     StatusProcesso["DOCUMENTACAO_INCOMPLETA"] = "DOCUMENTACAO_INCOMPLETA";
     StatusProcesso["DOCUMENTACAO_COMPLETA"] = "DOCUMENTACAO_COMPLETA";
-    StatusProcesso["PRONTO_PARA_PROTOCOLO"] = "PRONTO_PARA_PROTOCOLO";
-    StatusProcesso["APROVADO"] = "APROVADO";
-    StatusProcesso["REJEITADO"] = "REJEITADO";
-    StatusProcesso["FINALIZADO"] = "FINALIZADO";
+    StatusProcesso["DOCUMENTACAO_COMPLETA_PARA_PROTOCOLO"] = "DOCUMENTACAO_COMPLETA_PARA_PROTOCOLO";
+    StatusProcesso["DEFERIDO"] = "DEFERIDO";
+    StatusProcesso["INDEFERIDO"] = "INDEFERIDO";
+    StatusProcesso["ENTREGUE_AO_CLIENTE"] = "ENTREGUE_AO_CLIENTE";
+    StatusProcesso["RESTITUIDO"] = "RESTITUIDO";
 })(StatusProcesso || (StatusProcesso = {}));
 export var StatusDocumento;
 (function (StatusDocumento) {
