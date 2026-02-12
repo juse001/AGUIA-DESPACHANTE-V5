@@ -206,6 +206,38 @@ C:\Users\SEU_USUARIO\AppData\Roaming\Mozilla\Firefox\Profiles\[PERFIL].default-r
   npm install
   ```
 
+### ❌ Tela Branca Após Abrir o App
+- Pode ser erro de compilação ou dados corrompidos
+- **Passo 1: Verificar Console do Navegador**
+  1. Abra o navegador no `http://localhost:4173/`
+  2. Pressione `F12` (abrir DevTools)
+  3. Vá para a aba **Console**
+  4. Procure por mensagens de erro em vermelho
+  5. Se houver erro, me informe o texto exato
+
+- **Passo 2: Limpar Cache e Reconstruir**
+  ```powershell
+  # Parar o servidor (CTRL+C)
+  npm cache clean --force
+  rmdir /s node_modules
+  npm install
+  npm run build
+  npm run preview
+  ```
+
+- **Passo 3: Se Continuar Branco**
+  ```powershell
+  # Limpar dados armazenados do navegador
+  # No DevTools (F12) → Application → IndexedDB → AguiaDespachante → Deletar
+  ```
+  Depois recarregue a página (`Ctrl+R`)
+
+- **Passo 4: Testar Arquivo HTML Direto**
+  1. Feche o servidor (`CTRL+C`)
+  2. Abra Windows Explorer
+  3. Vá para: `dist/index.html` (duplo clique)
+  4. Se abrir corretamente, o problema é do servidor
+
 ### ❌ Dados sumiram após atualizar navegador
 - Você limpou o cache/cookies
 - **Solução:** Importe backup se tiver
@@ -224,6 +256,14 @@ C:\Users\SEU_USUARIO\AppData\Roaming\Mozilla\Firefox\Profiles\[PERFIL].default-r
   ```powershell
   npm run preview -- --port 5000
   ```
+
+### ❌ Execução de Scripts Desabilitada no PowerShell
+- Windows bloqueou script `.ps1`
+- **Solução:** Use o arquivo `.bat`
+  ```
+  Dê duplo clique em: iniciar.bat
+  ```
+  Ou use: `npm install` (linha de comando diretamente)
 
 ---
 
