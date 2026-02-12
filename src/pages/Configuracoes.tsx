@@ -98,9 +98,17 @@ export const Configuracoes: React.FC = () => {
       }
 
       setMensagem({ tipo: 'success', texto: 'Dados importados com sucesso!' });
+      
+      // Limpar o input para permitir importar o mesmo arquivo novamente
+      e.target.value = '';
     } catch (error) {
       setMensagem({ tipo: 'error', texto: 'Erro ao importar dados' });
+      e.target.value = '';
     }
+  };
+
+  const handleClickImportar = () => {
+    document.getElementById('import-file-input')?.click();
   };
 
   const handleLimparDados = () => {
@@ -191,22 +199,21 @@ export const Configuracoes: React.FC = () => {
 
           <div>
             <p className="text-sm text-gray-600 mb-2">Importar dados de um arquivo anterior</p>
-            <label className="w-full">
-              <Button
-                variant="primary"
-                className="w-full cursor-pointer"
-                type="button"
-              >
-                <Upload className="w-4 h-4" />
-                Importar Dados
-              </Button>
-              <input
-                type="file"
-                accept=".json"
-                onChange={handleImportarDados}
-                className="hidden"
-              />
-            </label>
+            <Button
+              variant="primary"
+              onClick={handleClickImportar}
+              className="w-full"
+            >
+              <Upload className="w-4 h-4" />
+              Importar Dados
+            </Button>
+            <input
+              id="import-file-input"
+              type="file"
+              accept=".json"
+              onChange={handleImportarDados}
+              className="hidden"
+            />
           </div>
         </div>
 

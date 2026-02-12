@@ -60,17 +60,25 @@ npm run preview
 
 ---
 
-## Passo 4: Testar Arquivo HTML Direto
+## Passo 4: ❌ NÃO Abra com Duplo Clique em `index.html`
 
-Se o servidor está causando problema:
+Se você tentou:
+```
+Duplo clique em: dist/index.html
+```
 
-1. **Feche o servidor**: `CTRL+C` no PowerShell
-2. **Abra Windows Explorer**
-3. Navigate para sua pasta do projeto
-4. Abra a pasta `dist/`
-5. **Dê duplo clique em `index.html`**
+Vai dar erro CORS:
+```
+Access to script at 'file:///...' 
+has been blocked by CORS policy
+```
 
-Se abrir corretamente, o problema é do servidor `npm run preview`.
+**✅ Use SEMPRE o servidor:**
+```powershell
+npm run preview
+```
+
+Depois acesse: `http://localhost:4173/`
 
 ---
 

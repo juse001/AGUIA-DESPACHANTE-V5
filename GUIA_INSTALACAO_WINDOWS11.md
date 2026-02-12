@@ -92,13 +92,23 @@ http://localhost:4173/
 
 Este servidor mantém os dados salvos no IndexedDB do navegador.
 
-### Opção B: Executar o Arquivo HTML Diretamente (Produção Pura)
+### Opção B: ❌ NÃO Recomendado - Abrir HTML Diretamente
 
-Depois do `npm run build`, abra o Windows Explorer:
+⚠️ **ATENÇÃO: Não funciona com duplo clique!**
 
-1. Navegar para a pasta do projeto
-2. Abrir `dist/` → `index.html` (duplo clique)
-3. Abre no navegador padrão
+Se você tentar:
+1. Abrir Windows Explorer
+2. Duplo clique em `dist/index.html`
+
+Terá erro CORS:
+```
+Access to script at 'file:///.../assets/index.js' 
+has been blocked by CORS policy
+```
+
+**Isso é proteção de segurança do navegador.**
+
+**✅ Use SEMPRE a Opção A (`npm run preview`)!**
 
 ---
 
