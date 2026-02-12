@@ -73,6 +73,7 @@ export interface Processo {
   dataAbertura: Date;
   dataPrazo?: Date;
   dataFechamento?: Date;
+  dataUltimaConsulta?: Date;
   descricao?: string;
   observacoes?: string;
   documentos: DocumentoProcesso[];

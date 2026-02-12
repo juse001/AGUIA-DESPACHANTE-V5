@@ -427,16 +427,6 @@ export const Processos: React.FC<ProcessosProps> = ({
                 </div>
               )}
 
-              {/* Data de Abertura do Processo */}
-              {processoCredenciais && (
-                <div className="pb-4 border-b border-gray-200">
-                  <p className="text-sm font-medium text-gray-700">Data de Abertura</p>
-                  <p className="text-sm text-gray-900 mt-1">
-                    {new Date(processoCredenciais.dataAbertura).toLocaleDateString('pt-BR')}
-                  </p>
-                </div>
-              )}
-
               {/* Tipo de Processo */}
               {processoCredenciais && (
                 <div className="pb-4 border-b border-gray-200">
@@ -470,6 +460,35 @@ export const Processos: React.FC<ProcessosProps> = ({
                       </option>
                     ))}
                   </select>
+                </div>
+              )}
+
+              {/* Data de Última Consulta */}
+              {processoCredenciais && (
+                <div className="pb-4 border-b border-gray-200">
+                  <p className="text-sm font-medium text-gray-700 mb-2">Data de Última Consulta</p>
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 px-3 py-2 bg-gray-50 border border-gray-200 rounded-md text-sm text-gray-900">
+                      {processoCredenciais.dataUltimaConsulta
+                        ? new Date(processoCredenciais.dataUltimaConsulta).toLocaleString('pt-BR')
+                        : '-'}
+                    </div>
+                    <Button
+                      variant="primary"
+                      type="button"
+                      onClick={async () => {
+                        try {
+                          const agora = new Date();
+                          await atualizarProcesso(processoCredenciais.id, { dataUltimaConsulta: agora });
+                          setMensagem({ tipo: 'success', texto: 'Consulta registrada!' });
+                        } catch (error) {
+                          setMensagem({ tipo: 'error', texto: 'Erro ao registrar consulta' });
+                        }
+                      }}
+                    >
+                      Confirmar Consulta
+                    </Button>
+                  </div>
                 </div>
               )}
 
